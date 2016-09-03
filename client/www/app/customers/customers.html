@@ -1,0 +1,55 @@
+<ion-view hide-back-button="true" hide-nav-bar="!customers.checkin" class='greyBkground'>
+    <ion-content scroll="false"   id='TowkenMap'>
+      <div class="text-center m-t-30" ng-if="!customers.mapEnable">
+            <img src="app/assets/img/logo.png" class="ScaleLogo">
+        </div>
+            <div ng-if="!customers.mapEnable" class='text-center m-t-15' style="margin-top: 35px;">
+                <p class="font30"> Welcome Back, <br/> <span class="text-center welcome-text font30"> {{customers.UserName}}</span></p>
+                <p class="text-center" ng-if="customers.mapEnable">Your location <i class="fa fa-map-marker fa-lg text-primary"></i> {{customers.address}}</p>
+            </div>
+            <div class="checkin-circle" ng-click="customers.checkIn()" ng-if="!customers.mapEnable">
+                <img src="app/assets/img/welcome.png" class="img-responsive">
+            </div>
+            <div style='color: #716969;' class="checkin-circle m-t-30" ng-if="!customers.mapEnable">CHECK IN</div>
+            <div ng-show="customers.mapEnable" style="position: relative">
+                <ui-gmap-google-map center='customers.map.center' zoom='customers.map.zoom' dragging='true' events='customers.map.events' options='customers.map.option'>
+                    <ui-gmap-marker coords="customers.marker.coords" options="customers.marker.options" idkey="customers.marker.id"></ui-gmap-marker>
+                    <ui-gmap-markers models="customers.randomMarkers" coords="'self'" icon="'icon'" click="customers.closeClick" ng-if="customers.randomMarkers">
+                    </ui-gmap-markers>
+                </ui-gmap-google-map>
+            </div>
+             <div id='mapList' style="position: absolute; bottom: -17px; width:100%;"  ng-if="customers.selectedMarkerData">
+             <div class="list card no-pad">
+                 <div class="item item-body no-pad" ng-click="customers.selectedTowken(customers.selectedMarkerData)"> 
+                       <div class="row no-pad no-margin">
+                         <div class="col-xs-4 no-pad">
+                          <img  class="img-responsive CardImg" ng-src="{{customers.selectedMarkerData.towken_pic}}">
+                            <div class="CardCircle bkground"> 
+                        <i class="CardIcon" ng-class='customers.selectedMarkerData.ionIcon'></i>
+                        </div>
+                         </div>
+
+                         <div class="col-xs-8 no-pad">
+                          <div class="pull-right">
+                                <div class="bkground white cardTime"><div ng-if="!customers.selectedMarkerData.timefinished">Time remaining  <timer interval="1000" countdown="customers.selectedMarkerData.remaining_time" finish-callback="customers.Timerfinished(customers.selectedMarkerData)">{{hours}}:{{minutes}}:{{seconds}} </timer></div>
+                                <div ng-if="customers.selectedMarkerData.timefinished"> Expired</div>  
+                                </div>
+                             </div>
+                           <div class="row no-pad">
+                              <span style="padding-left: 32px;">Get {{customers.selectedMarkerData.discount}}% off</span>
+                           </div>  
+                             <div class="row no-pad" style="padding-left: 32px; padding-top: 10px;">
+                                <p class="CardText">{{customers.selectedMarkerData.token_details}}</p>
+                             </div>
+                              <div class="row no-pad" style="padding-left: 32px; padding-top:10px; padding-bottom: 10px;">
+                               
+                                <p class="color CardText"><i class="icon ion-location scaleIcon" style="font-size:15px;"></i>  {{customers.selectedMarkerData.Kms}} km away from your position</p>
+                             </div>
+                         </div>
+                       </div>
+                </div>
+            </div>
+         </div>
+
+    </ion-content>
+</ion-view>

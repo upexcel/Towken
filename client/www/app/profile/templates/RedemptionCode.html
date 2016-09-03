@@ -1,0 +1,16 @@
+<ion-modal-view>
+    <ion-header-bar class='bkground'>
+        <h1 class="title">Redemption Code</h1>
+        <button class="button icon ion-close-round model-close" on-tap="profile.RedemptionCode.hide()"></button>
+    </ion-header-bar>
+    <ion-content scroll="true" has-header='true'>
+       <div class="list padding" id ="mapList">
+       <div ng-if ="!profile.RedemptionData">Redemption code not available</div>
+    <span class="item MarTop" ng-repeat="data in profile.RedemptionData track by $index">
+      <h2>Redemption Code: {{data.redeemCode}}</h2>
+      <p>Email: {{data.email}}</p>
+      <p>Name: {{data.fullName}}</p>
+    </span>
+</div>
+    </ion-content>
+</ion-modal-view>

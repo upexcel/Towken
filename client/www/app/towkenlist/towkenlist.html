@@ -1,0 +1,76 @@
+<ion-view hide-back-button="true">
+      <ion-header-bar class="bar bar-subheader">
+        <div class="row text-center no-margin" >
+          <div class="col borderRight" ng-click="towkenlist.ShortDiscount();">
+         <i class="icon ion-pricetag scaleIcon color font12" ></i> <span class="font12">Discount&nbsp;<span ng-if="towkenlist.DiscountClicked">
+         <i class="ion-arrow-up-c color" ng-if="towkenlist.DiscountAsc"></i><i class="ion-arrow-down-c color"ng-if="!towkenlist.DiscountAsc"></i></span></span>
+        </div>
+        <div class="col borderRight" ng-click="towkenlist.ShortRating();">
+         <i class="icon ion-ios-star-outline color font12" ></i> <span class="font12">Rating&nbsp;<span ng-if="towkenlist.RatingClicked"> <i class="ion-arrow-up-c color" ng-if="towkenlist.RatingAsc"></i><i class="ion-arrow-down-c color"ng-if="!towkenlist.RatingAsc"></i></span></span>
+        </div>
+        <div class="col borderRight" ng-click="towkenlist.ShortDistance();">
+         <i class="ion-ios-location-outline color font12"></i> <span class="font12">Distance&nbsp;<span ng-if="towkenlist.DistanceClicked"> <i class="ion-arrow-up-c color" ng-if="towkenlist.DistanceAsc"></i><i class="ion-arrow-down-c color"ng-if="!towkenlist.DistanceAsc"></i></span></span>
+        </div>
+        <div class="col" ng-click="towkenlist.popover.show($event)">
+          <i class="ion-ios-shuffle color font12"></i> <span class="font12">Type</span>
+        </div>
+        
+    </div>
+        </ion-header-bar>
+    <ion-content scroll="true">       
+       <div id='mapList'>
+            <div class="list card" ng-repeat="token in towkenlist.towkens | filter: towkenlist.FilterKey track by $index" ng-click='towkenlist.selectedTowken(token)'>
+                <div class="item item-body no-pad">
+                    <div class="row no-pad no-margin">
+                        <div class="col-xs-4   no-pad" style="position:relative;">
+                            <img class="img-responsive CardImg" ng-src="{{token.towken_pic}}">
+                            <div class="CardCircle bkground">
+                                <i class="CardIcon" ng-class="token.ionIcon"></i>
+                            </div>
+                        </div>
+                        <div class="col-xs-5 no-pad">
+                            <div class="row no-pad" style="margin-top: 10px;">
+                                <span style="padding-left: 32px;"  class="font-14">{{token.business_name}}<br/>{{token.discount}}% Off</span>
+                            </div>
+                            <div class="row no-pad" style="padding-left: 32px; padding-top: 10px;">
+                                <p class="CardText color"> <i class="icon ion-location scaleIcon" style="font-size:15px;"></i> {{token.Kms}} km away from your position</p>
+                            </div>
+                            <div class="row no-pad" style="padding-left: 32px; padding-top:10px; padding-bottom: 10px;" >
+                            <div id ="Rating">
+                                 <span style="font-size:9px;">Rating: {{token.user_id.rating | number:1}}</span> <rating ng-model="token.user_id.rating" max="5" readonly='true'></rating>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3 no-pad bkground">
+                          <div class="text-center white padding" style="font-size: 57%; margin-top: 44px;">
+                          <div ng-if="token.timefinished != true">
+                              Time remaining
+                                <timer interval="1000" countdown="token.remaining_time" finish-callback="towkenlist.Timerfinished(token)">{{hours}}:{{minutes}}:{{seconds}} </timer><br/>
+                            </div> 
+                            <div ng-if="token.timefinished == true">Expired</div>   
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center" ng-show='towkenlist.DataNotAvailable'> Towkens not available! Check back soon. </div>
+        </div>
+    </ion-content>
+     <script id="templates/popover.html" type="text/ng-template">
+      <ion-popover-view id="mapList">
+        <ion-content scroll="false">
+          <div class="list">
+            <a class="item" ng-click="towkenlist.ShortType('Saloon')">
+              Saloon
+            </a>
+            <a class="item" ng-click="towkenlist.ShortType('Restaurent')">
+              Restaurant
+            </a>
+            <a class="item" ng-click="towkenlist.ShortType('Shopping')">
+             Shopping
+            </a>
+          </div>
+        </ion-content>
+      </ion-popover-view>
+    </script>
+</ion-view>

@@ -1,0 +1,24 @@
+<ion-modal-view>
+    <ion-header-bar class='bkground'>
+        <h1 class="title">RATE AND REVIEW</h1>
+        <button class="button icon ion-close-round model-close" on-tap="selectedtowkenlist.rateAndComment.hide()"></button>
+    </ion-header-bar>
+    <ion-content scroll="false" has-header='true' style='background:#fff;'>
+        <div class="MarTop">
+            <label class="modalLevel">Rate</label>
+            <div class="Selectbox color">
+                <div ng-init="rating = star.rating + 1"></div>
+                <div class="star-rating" star-rating rating-value="rating" data-max="5" on-rating-selected="rateFunction(rating)"></div>    
+            </div>
+        </div>
+        <div class="MarTop">
+            <label class="modalLevel">Comments</label>
+            <div class="Selectbox color">
+                <input type="text" ng-model="selectedtowkenlist.comments" style="width:100%" placeholder="Enter your comments">
+            </div>
+        </div>
+        <div style="padding:30px;">
+            <button class="btn btn-lg  btn-width signIn bkground white" ng-click="selectedtowkenlist.submit()">SUBMIT</button>
+        </div>
+    </ion-content>
+</ion-modal-view>

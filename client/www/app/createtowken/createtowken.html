@@ -1,0 +1,71 @@
+<ion-view hide-back-button="true" hide-nav-bar="true" class="bkground">
+    <div class="bar bar-header bkground">
+        <h1 class="title">Create Towken</h1>
+    </div>
+   
+    <ion-content scroll="true"  class="has-header"  style="background: #fff;">
+          <div class='top padding'>
+            <div class="MarTop">
+               <label class="modalLevel">Business Name</label><br/>&nbsp;(Maximum 30 charcters)
+                <div class="Selectbox color">
+                   <input type="text"  ng-model="create.businessname" style="width:100%" placeholder="Enter your business name"  name='businessname'>
+                </div>
+            </div>
+            <div class="MarTop">
+                <label class="modalLevel">Duration</label>
+                <div class="form-control Selectbox color"  ng-click="create.durationPopup()">
+                 <div class="pull-left"><div ng-if="create.DurationUpdate"><timer interval="1000" countdown="create.duration">{{hours}}:{{minutes}}:{{seconds}} </timer></div><div ng-if="!create.DurationUpdate"> {{create.duration}}</div></div>
+                  <div class="pull-right"><i class="ion-arrow-down-b color"></i></div>
+             
+                </div>
+            </div>
+            <div class="MarTop">
+                <label class="modalLevel">Distance</label>
+                <div class="form-control Selectbox color"  ng-click="create.distancePopup()">
+                 <div class="pull-left">{{create.distance}}</div>
+                  <div class="pull-right"><i class="ion-arrow-down-b color"></i></div>
+             
+                </div>
+            </div>
+            <div class="MarTop">
+                <label class="modalLevel">Type of Discount</label>
+                <div class="form-control Selectbox color"  ng-click="create.discountPopup()">
+                 <div class="pull-left"><span ng-if='create.discount'>{{create.discount}}</span><span ng-if='!create.discount' style="color: rgb(164, 160, 160);">Select</span></div>
+                  <div class="pull-right"><i class="ion-arrow-down-b color"></i></div>
+             
+                </div>
+            </div>
+              <div class="MarTop">
+                <label class="modalLevel">Towken Quantity</label>
+                <div class="form-control Selectbox color"  ng-click="create.quantityPopup()">
+                 <div class="pull-left"><span ng-if='create.quantity'>{{create.quantity}}</span><span ng-if='!create.quantity' style="color: rgb(164, 160, 160);">Select</span></div>
+                  <div class="pull-right"><i class="ion-arrow-down-b color"></i></div>
+             
+                </div>
+            </div>
+             <div class="MarTop">
+                <label class="modalLevel">Type of Towken</label>
+                <div class="form-control Selectbox color"  ng-click="create.typePopup()">
+                 <div class="pull-left"><span ng-if='create.type'>{{create.type}}</span><span ng-if='!create.type' style="color: rgb(164, 160, 160);">Select</span></div>
+                  <div class="pull-right"><i class="ion-arrow-down-b color"></i></div>
+             
+                </div>
+            </div>
+            <div class="MarTop">
+               <label class="modalLevel">Towken Details</label>
+                <div class="Selectbox color">
+                   <input type="text"  ng-model="create.details" style="width:100%" placeholder="Enter your Towken Details">
+                </div>
+            </div>
+             
+             <div class="MarTop" >
+             
+            <div style="padding:30px;">
+                <button class="btn btn-lg  btn-width signIn bkground white" ng-click="create.create()">{{create.SubmitButton}}</button>
+                <button class="btn btn-lg  btn-width cancelButton" ng-click="create.cancel()">
+                       CANCEL
+               </button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

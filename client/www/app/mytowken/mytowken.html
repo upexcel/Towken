@@ -1,0 +1,80 @@
+<ion-view hide-back-button="true">
+    <ion-content scroll="true" class="has-header">
+        <div id='mapList'>
+            <div class="list card no-pad" ng-repeat="token in mytowken.towkens" ng-if="mytowken.business == 'business' " ng-click="mytowken.TowkenEdit(token)">
+                <div class="item item-body">
+                    <div class="row no-pad no-margin">
+                        <div class="col col-33 no-pad" style="position:relative;">
+                            <img class="img-responsive CardImg" ng-src="{{token.towken_pic}}">
+                            <div class="CardCircle bkground">
+                                <i class="icon ion-ios-pricetag-outline CardIcon"></i>
+                            </div>
+                        </div>
+                        <div class="col col-67 no-pad">
+                            <div class="row no-pad" style="padding-top: 10px;">
+                                <span style="padding-left: 32px;">Get {{token.discount}}% off</span>
+                            </div>
+                            <div class="row no-pad" style="padding-left: 32px; padding-top: 10px;">
+                                <p class="CardText">{{token.token_details}}</p>
+                            </div>
+                            <div class="row no-pad" style="padding-left: 32px;">
+                                <div id="Rating" style="width:60%">
+                                    <timer countdown="token.remaining_time" interval="1000" max-time-unit="'hour'" finish-callback="token.Timerfinished()">
+                                        <p class="color CardText">{{hhours}} hours {{mminutes}} Minutes left</p>
+                                        <div class="progress white" style="margin-bottom: 0px;">
+                                            <div class="progress-bar white" role="progressbar" style="width:{{progressBar}}%; background: #a13daa;">
+                                            </div>
+                                        </div>
+                                    </timer>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="list card" ng-repeat="token in mytowken.towkens" ng-click='mytowken.selectedTowken(token)' ng-if="mytowken.business == 'user' ">
+                <div class="item item-body no-pad">
+                    <div class="row no-pad no-margin">
+                        <div class="col-xs-4   no-pad" style="position:relative;">
+                            <img class="img-responsive CardImg" ng-src="{{token
+                            .towken_pic}}">
+                            <div class="CardCircle bkground">
+                                <i class="CardIcon" ng-class="token.ionIcon"></i>
+                            </div>
+                        </div>
+                        <div class="col-xs-5 no-pad">
+                            <div class="row no-pad" style="margin-top: 10px;">
+                                <span style="padding-left: 32px;" class="font-14">{{token.business_name}}<br/>{{token.discount}}% Off</span>
+                            </div>
+                            <div class="row no-pad" style="padding-left: 32px; padding-top: 10px;">
+                                <p class="CardText color"> <i class="icon ion-location scaleIcon" style="font-size:15px;"></i> {{token.Kms}} km away from your position</p>
+                            </div>
+                            <div class="row no-pad" style="padding-left: 32px; padding-top:10px; padding-bottom: 10px;">
+                                <div id="Rating">
+                                    <span style="font-size:9px;">Rating: {{token.rating | number:1}}</span>
+                                    <rating ng-model="token.rating" max="5" readonly='true'></rating>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3 no-pad " ng-class="{'GreenBackground': token.redeemed == 'true', 'bkground' : token.redeemed == 'false', 'greyBkground': token.timefinished == true}">
+                            <div class="text-center white padding" style="font-size: 57%; margin-top: 29px;">
+                               <div ng-if="token.redeemed == 'true'">
+                                   <i class="icon ion-android-done font30"></i><br/>
+                                  <span> Redeemed</span>
+                               </div>
+                                 <div ng-if="token.timefinished == true" style="color: black;">
+                                  <span> Expired this Towken</span>
+                               </div>
+                                <div ng-if="token.redeemed == 'false' && token.timefinished != true" class="p-t-10" >
+                                Time remaining
+                                <timer interval="1000" countdown="token.remaining_time" finish-callback="mytowken.Timerfinished(token)">{{hours}}:{{minutes}}:{{seconds}} </timer><br/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center" ng-if='!mytowken.DataAvailable'> Towkens not available! Check back soon. </div>
+        </div>
+    </ion-content>
+</ion-view>

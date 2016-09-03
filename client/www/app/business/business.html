@@ -1,0 +1,51 @@
+<ion-view hide-back-button="true" hide-nav-bar="true" class="bkground">
+<ion-header-bar align-title="left" class="bkground">
+  <div class="buttons">
+  </div>
+  <h1 class="title"></h1>
+  <div class="buttons">
+   <label class='white' style="margin-top:4px;">Show Customer &nbsp;</label>
+       <label class="toggle">
+         <input type="checkbox" ng-model="business.show" ng-change="business.ShowCustomer(business.show);">
+            <div class="track">
+               <div class="handle bkground"></div>
+            </div>
+      </label>
+  </div>
+</ion-header-bar>
+   <ion-content scroll="false" id="TowkenMap" class="has-header">
+       <div id='BusinessMap'>
+           <ui-gmap-google-map center='business.map.center' zoom='business.map.zoom'>
+               <ui-gmap-marker coords="business.marker.coords" options="business.marker.options" idkey="business.marker.id">
+               </ui-gmap-marker>
+               <ui-gmap-markers models="business.randomMarkers" coords="'self'" icon="'icon'" click="business.closeClick" ng-if="business.randomMarkers">
+               </ui-gmap-markers>
+           </ui-gmap-google-map>
+       </div>
+       <div class='myprogress'>
+           <button class="btn btn-lg  btn-width signIn bkground white" ng-click="business.CreateTowken()">
+                CREATE TOWKEN
+              </button>
+       </div>
+       <div class='myprogress ' style="top: -20px; max-height: 10px;" ng-if="!business.show">
+           <div class="row backgroundwhite no-pad no-margin">
+               <div class="col  RightBorder">
+                   <div class="PinkCircle m-t-15 text-center color ">
+                       <span style='font-size: 10px;'>{{business.lastDayCheckin}}</span>
+                   </div>
+                   <div class="text-center m-t-15">
+                       Check-Ins in <br/> last day
+                   </div>
+               </div>
+               <div class="col m-t-15">
+                   <div class="PinkCircle text-center color">
+                       <span style='font-size: 10px;'>{{business.lastMonthCheckin}}</span>
+                   </div>
+                   <div class="text-center m-t-15 m-b-15">
+                       Check-Ins in <br/> last Month
+                   </div>
+               </div>
+           </div>
+       </div>
+   </ion-content>
+</ion-view>

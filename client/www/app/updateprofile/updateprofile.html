@@ -1,0 +1,28 @@
+<ion-view hide-nav-bar="true">
+    <div class="bar bar-header bkground">
+        <button class="button button-clear" ng-click="UP.GO('app.profile')"> <i class="ion-ios-arrow-left white"></i> <span class="white" >Back</span></button>
+        <div class="title">Setting</div>
+    </div>
+    <ion-content scroll="false" class="has-header" style="background: #fff;"  id='TowkenMap'>
+        <div class='top padding ' id="ListRoundTextbox">
+            <form name="PasswordForm" class="m-b-15" novalidate>
+                 <label class="modalLevel">Your current location</label>
+                 <div ng-click="UP.edit()" ng-if="UP.edit">
+                    &nbsp; {{UP.CurrentLocation}} <i class="icon ion-edit color font-18"></i>
+                 </div>
+                
+                <div class="list list-inset RoundTextBox" ng-if="!UP.edit">
+                    <label class="item item-input">
+                    <input type="text"  ng-model="UP.CurrentLocation"  required>
+                  </label>
+                    <button class="btn btn-lg  btn-width signIn bkground white" ng-click="UP.update()">UPDATE</button>
+                </div>
+            </form>
+              <ui-gmap-google-map center='UP.map.center' zoom='UP.map.zoom' dragging='true' events='UP.map.events' options='UP.map.option'>
+                 <ui-gmap-marker coords="UP.marker.coords" options="UP.marker.options" idkey="UP.marker.id">
+               </ui-gmap-marker>
+                  
+                </ui-gmap-google-map>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,76 @@
+<ion-view hide-back-button="true">
+    <ion-content scroll="true" style="background: #262626;">
+      <div  class="m-t-15" ng-if="account.AccountType">
+        <div class="padding">
+         <div class="circleBase type3 profileImg" style="background-image:url({{account.ProfilePic}});   width: 150px;
+    height: 150px;">
+         </div>
+            <div class="text-center white">
+                <h4>{{account.UserName}}</h4>
+                <span>{{account.email}}</span>
+            </div>
+        </div>
+
+        <img class="userTypeIcon" ng-src="app/assets/img/{{account.AccountType.img}}">
+        <div class="card no-pad" style="border-radius: 9px; margin-top: 50px;">
+            <div class="item item-text-wrap backgroundwhite no-pad">
+         
+                 <div class="text-center heading" style="padding-top: 58px;">
+               <h2 class="heading">{{account.points}} Points</h2>
+            </div>
+                <hr class="Accounthr">
+                <div class="row no-pad no-margin AccountRow m-t-15">
+                    <div class="col no-pad">
+                        <div class="AccountCircle ActiveAccountType">
+                            <div class="text-center">
+                                <span class="circleBackicon">♕</span>
+                                <span class="circleText">BRONZE</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col no-pad">
+                        <div class="AccountCircle text-center" ng-class="{'ActiveAccountType': account.AccountType.type == 'silver' || account.AccountType.type == 'gold' || account.AccountType.type == 'platinum'} ">
+                             <span class="circleBackicon" ng-if = "account.AccountType.type == 'silver' || account.AccountType.type == 'gold' || account.AccountType.type == 'platinum'">♕</span>
+                            <span class="circleText" style="left: 11px;">SILVER</span>
+                        </div>
+                    </div>
+                    <div class="col no-pad">
+                        <div class="AccountCircle text-center" ng-class="{'ActiveAccountType': account.AccountType.type == 'gold' || account.AccountType.type == 'platinum'  } ">
+                        <span class="circleBackicon" ng-if = "account.AccountType.type == 'gold' || account.AccountType.type == 'platinum' ">♕</span>
+                        <span class="circleText" style="left: 15px;">GOLD</span>
+                        </div>
+                    </div>
+                    <div class="col no-pad">
+                        <div class="AccountCircle text-center" ng-class="{'ActiveAccountType': account.AccountType.type == 'platinum'  } ">
+                         <span class="circleBackicon" ng-if = " account.AccountType.type == 'platinum' ">♕</span>   
+                        <span class="circleText" style="left: 4px;">PLATINUM</span></div>
+                    </div>
+                </div>
+                <div class="row no-pad no-margin AccountRow" style="display: block; margin-top:16px;">
+                    <div class="text-center">
+                        <span class="font-18 color heading">{{account.AccountType.heading}}</span>
+                        <p class="AccountText"> {{account.AccountType.msg}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row  no-pad no-margin borderInAccount ">
+                <div class="col bkground borderInAccount LeftBorder">
+                    <div class="white text-center">
+                        <span class="font30" style="font-weight: bold;">{{account.ChekedIn}}</span> <br/> Check In
+                    </div>
+                </div>
+                <div class="col bkground borderInAccount rightBorder">
+                    <div class="white text-center">
+                        <span class="font30" style="font-weight: bold;">  {{account.TotalTowkenAdd}}</span> <br/> Towkens Add
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+    </ion-content>
+</ion-view>
+
+
+
+
+ 

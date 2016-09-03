@@ -1,0 +1,51 @@
+<ion-side-menus enable-menu-with-back-views="true">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-stable bkground" align-title="center">
+            <ion-nav-buttons side="right">
+                <button class="button header-left-button" ng-class="{'headerActiveButton': menu.isActive('towkenlist')}" ng-click="menu.setActive('towkenlist')"  ng-if='menu.navMapListOption'> List </button>
+                <button class="button header-right-button" ng-class="{'headerActiveButton': menu.isActive('user')}" ng-click="menu.setActive('user')"  ng-if='menu.navMapListOption' style="font-size: 12px;"> Map </button>
+            </ion-nav-buttons>
+            <ion-nav-title>
+                <h1 class="title no-margin">
+                    <img src="app/assets/img/logowhite.png" class="img-responsive titleImg">
+                </h1>
+            </ion-nav-title>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+</ion-side-menus>
+
+<ion-footer-bar class="back-white">
+    <div class="tabs tabs-icon-top">
+        <span class="tab-item" ui-sref="app.user" ng-class="{'footerActiveButton': isActiveFooter == 'user'}"  ng-if='menu.customer'>
+            <i class="icon ion-home scaleIcon" ng-class="{'white': isActiveFooter == 'user', 'color': isActiveFooter !== 'user'}" ></i> Home
+        </span>
+
+         <span class="tab-item" ui-sref="app.business" ng-class="{'footerActiveButton': isActiveFooter == 'business'}"  ng-if='!menu.customer'>
+            <i class="icon ion-home scaleIcon" ng-class="{'white': isActiveFooter == 'business', 'color': isActiveFooter !== 'business'}" ></i> Home
+        </span>
+
+
+        <span class="tab-item" ui-sref="app.mytowkens" ng-class="{'footerActiveButton': isActiveFooter == 'mytowken'}"  >
+            <i class="icon ion-ios-pricetag scaleIcon" style="font-size: 26px;
+    padding-top: 4px;" ng-class="{'white': isActiveFooter == 'mytowken', 'color': isActiveFooter !== 'mytowken'}"></i> My Towkens
+        </span>
+
+
+          <span class="tab-item" ui-sref="app.redeem" ng-class="{'footerActiveButton': isActiveFooter == 'redeem'}"  ng-if='!menu.customer'>
+            <i class="icon ion-qr-scanner scaleIcon" style="font-size: 26px;
+    padding-top: 4px;"  ng-class="{'white': isActiveFooter == 'redeem', 'color': isActiveFooter !== 'redeem'}"></i> Redeem
+        </span>
+
+        <span class="tab-item" ui-sref="app.account" ng-class="{'footerActiveButton': isActiveFooter == 'account'}"    ng-if='menu.customer'>
+            <i class="icon ion-social-buffer-outline"  ng-class="{'white': isActiveFooter == 'account', 'color': isActiveFooter !== 'account'}"></i> 
+            Level
+        </span>
+
+        <span class="tab-item" ui-sref="app.profile" ng-class="{'footerActiveButton': isActiveFooter == 'setting'}">
+            <span ng-if="menu.customer"><i class="icon ion-android-person scaleIcon" ng-class="{'white': isActiveFooter == 'setting', 'color': isActiveFooter !== 'setting'}"></i> Profile</span>
+              <span ng-if="!menu.customer"><i class="icon ion-ios-gear-outline" ng-class="{'white': isActiveFooter == 'setting', 'color': isActiveFooter !== 'setting'}"></i> Settings</span>
+        </span>
+
+    </div>
+</ion-footer-bar>

@@ -1,0 +1,159 @@
+<ion-view>
+    <ion-content scroll="false">
+        <div id="loginContainer">
+            <div class="text-center m-t-30">
+               <img src="app/assets/img/logo.png" class="ScaleLogo">
+            </div>
+            <form name="SignupForm" novalidate>
+                <div class="list m-t-30">
+                    <label class="item item-input loginInputField" style="    border-top: none;">
+                        <span class="input-label font100">
+                            <i class="ion-ios-list-outline color"></i>&nbsp;&nbsp;Full Name
+                        </span>
+                        <input type="text" ng-model="signup.fullname" name="fullname" required>
+                        </label>
+                        
+                             <label class="item item-input loginInputField">
+                            <span class="input-label font100">
+                                <i class="ion-ios-email-outline color"></i>&nbsp;&nbsp;Email
+                            </span>
+                            <input type="email"  ng-model="signup.email" name="email" required>
+                            </label>
+                             <label class="item item-input loginInputField">
+                            <span class="input-label font100">
+                                <i class="fa fa-lock scaleIcon color"></i>&nbsp;&nbsp;Password
+                            </span>
+                            <input type="password"  ng-model="signup.password" name="password" required>
+                            </label>
+                        </div>
+                        <label class="toggle" style="vertical-align: middle;">
+                            <input type="checkbox" ng-model="signup.user" ng-change="signup.checkbox1(signup.user);">
+                                <div class="track">
+                                    <div class="handle bkground"></div>
+                                </div>
+                            </label>
+                            <span class="font-18">&nbsp;&nbsp; {{signup.userType}}</span>
+                            <div class="col-xs-12 no-pad-left-right">
+                                <button class="btn btn-block btn-lg btn-primary signIn bkground" ng-click="signup.signup()" ng-disabled="SignupForm.email.$invalid||SignupForm.fullname.$invalid||SignupForm.username.$invalid||SignupForm.password.$invalid">Signup</button>
+                            </div>
+                            <div class="col-xs-12 no-pad-left-right">
+                                <div class="text-center m-t-30 m-b-15" ng-style="!login.user && {'margin-top':'50px'}">
+                                    <small class="font-14">
+                                        <span>When you Signup, automatically you agree with our  <br/> <a> Terms and service of Towken App                                  </span>
+                                        
+                                       
+                                    </small>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </ion-content>
+            </ion-view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-view>
+    <ion-content scroll="true">
+        <div id="signupContainer">
+            <div class="loginFormHead">
+                <h3>Sign Up</h3>
+            </div>
+            <form name="SignupForm" novalidate>
+                <div class="list list-inset">
+                    <label class="item item-input item-floating-label">
+                    <span class="input-label">First Name</span>
+                    <input type="text" placeholder="First Name" ng-model="signup.fname" name="fname" ng-blur="fnameBlur=true" required>
+                    <span ng-show="SignupForm.fname.$invalid && fnameBlur"><small style="color:red">First name Can'nt Left blank</small></span>
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Last Name</span>
+                        <input type="text" placeholder="Last Name" ng-model="signup.lname" name="lname"  ng-blur=" lnameBlur= true" required>
+                         <span ng-show="SignupForm.lname.$invalid && lnameBlur"><small style="color:red">Last name Can'nt Left blank</small></span>
+                        </label>
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Email</span>
+                        <input type="email" placeholder="Email" ng-model="signup.email" name="email"  ng-blur="emailBlur=true" required>
+                         <span ng-show="SignupForm.email.$invalid && emailBlur"><small style="color:red">Not a valid Email</small></span>
+                        </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Password</span>
+                        <input type="password" placeholder="Password" ng-model="signup.password" name="password" ng-minlength="6" ng-blur="passBlur=true"required>
+                        <span ng-show="SignupForm.password.$invalid && passBlur"><small style="color:red">Password length must be 6</small></span>
+                        </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Confirm Password</span>
+                        <input type="password" name="cpassword" placeholder="Confirm Password" ng-model="signup.cpassword" password-verify="signup.password" name="cpassword" ng-blur="confirmPasswordBlur=true" required>
+                        <span ng-show="SignupForm.cpassword.$invalid && confirmPasswordBlur"><small style="color:red">Password must match </small></span>
+                        </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Phone Number</span>
+                        <input type="number" placeholder="Phone Number" ng-model="signup.pnumber" name="phone" required>
+                        </label>
+                </div>
+                <div class="col-xs-12" style="padding-bottom: 10px;">
+                    <div class="col-xs-12 no-pad-left-right">
+                        <div class="m-t-15">
+                            <div class="col-xs-6" style="padding: 0px;">
+                                <ion-checkbox ng-model="signup.user" style="border-width: 0px;" ng-change="signup.checkbox1(signup.user);"><span class="loginUserTypeText"><i class="ion-android-person"></i> User</span></ion-checkbox>
+                            </div>
+                            <div class="col-xs-6" style="padding: 0px;">
+                                <ion-checkbox ng-model="signup.business" style="border-width: 0px;" ng-change="signup.checkbox2(signup.business);"><span class="loginUserTypeText"><i class="ion-briefcase"></i> Business</span></ion-checkbox>
+                            </div>
+                        </div>
+                        <button class="btn btn-block btn-lg btn-primary signIn m-t-15" ng-click="signup.signup()" ng-disabled="SignupForm.fname.$invalid||SignupForm.lname.$invalid||SignupForm.email.$invalid||SignupForm.password.$invalid||SignupForm.cpassword.$invalid||SignupForm.phone.$invalid||SignupForm.cpassword.passwordVerify">Sign Up</button>
+                    </div>
+                    <div class="col-xs-12 no-pad-left-right" ng-if="signup.user">
+                        <div class="row-margin  m-t-15 m-b-15">
+                            <div class="col-xs-4 border-grey"></div>
+                            <div class="col-xs-4 margin-top-or text-center">Or</div>
+                            <div class="col-xs-4 border-grey"></div>
+                        </div>
+                        <button type="submit" class="btn btn-lg btn-primary btn-width btn-facebook" ng-click="signup.GoFb()">
+                                <i class="ion-social-facebook fa-float-left" style="font-size:18px; margin-top:0px;"></i>Login with Facebook
+                            </button>
+                        <button type="submit" class="btn btn-lg btn-danger btn-width btn-google" ng-click="signup.GoGoogle();">
+                                <i class="ion-social-googleplus fa-float-left" style="font-size:18px; margin-top:0px;"></i>Login with Google
+                            </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-view> -->

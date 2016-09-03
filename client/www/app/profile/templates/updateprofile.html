@@ -1,0 +1,30 @@
+<ion-modal-view>
+    <ion-header-bar class='bkground'>
+        <h1 class="title">Update Profile</h1>
+        <button class="button icon ion-close-round model-close" on-tap="profile.updateProfile.hide()"></button>
+    </ion-header-bar>
+    <ion-content scroll="false" has-header='true'>
+        <div id="loginContainer">
+            <form name="UpdateForm" novalidate>
+                <div>
+                    <label class="item item-input loginInputField" style="    border-top: none;">
+                        <span class="input-label font100">
+                            <i class="fa fa-user scaleIcon color"></i>&nbsp;&nbsp;Full Name
+                        </span>
+                        <input type="text"  ng-model="profile.newName" name="fname" required>
+                        </label>
+                    <label class="item item-input loginInputField">
+                            <span class="input-label font100">
+                                <i class="fa fa-lock scaleIcon color"></i>&nbsp;&nbsp;User Name
+                            </span>
+                            <input type="text"  ng-model="profile.newLName" name="lname" required>
+                            </label>
+                </div>
+                <div class="col-xs-12 no-pad-left-right m-t-15">
+                    <button class="btn btn-lg btn-primary btn-width signIn bkground font-14" ng-click="profile.updateMyProfile()" ng-disabled="UpdateForm.fname.$invalid||UpdateForm.lname.$invalid">Update</button>
+                </div>
+
+            </form>
+        </div>
+    </ion-content>
+</ion-modal-view>

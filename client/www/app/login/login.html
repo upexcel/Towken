@@ -1,0 +1,59 @@
+<ion-view>
+    <ion-content scroll="false">
+        <div id="loginContainer">
+            <div class="text-center m-t-30">
+                   <img src="app/assets/img/logo.png" class="ScaleLogo">
+            </div>
+            <form name="LoginForm" novalidate>
+                <div class="list m-t-30">
+                    <label class="item item-input loginInputField" style="    border-top: none;">
+                        <span class="input-label font100">
+                            <i class="fa fa-user scaleIcon color"></i>&nbsp;&nbsp;Email
+                        </span>
+                        <input type="text" ng-model="login.email" name="email" required>
+                        </label>
+                        <label class="item item-input loginInputField">
+                            <span class="input-label font100">
+                                <i class="fa fa-lock scaleIcon color"></i>&nbsp;&nbsp;Password
+                            </span>
+                            <input type="password"  ng-model="login.password" name="password" required>
+                            </label>
+                        </div>
+                        <label class="toggle" style="vertical-align: middle;">
+                            <input type="checkbox" ng-model="login.user" ng-change="login.checkbox1(login.user);">
+                                <div class="track">
+                                    <div class="handle bkground"></div>
+                                </div>
+                            </label>
+                            <span class="font-18">&nbsp;&nbsp; {{login.userType}}</span>
+                            <div class="col-xs-12 no-pad-left-right m-t-15">
+                                <button class="btn btn-lg btn-primary btn-width signIn bkground font-14" ng-click="login.signIn()" ng-disabled="LoginForm.email.$invalid||LoginForm.password.$invalid">LOGIN</button>
+                            </div>
+                            <div class="col-xs-12 no-pad-left-right">
+                                <div class="text-center m-t-15 m-b-15">
+                                    <small class="font-18">
+                                        <a href="#/ForgotPassword">Forgot password?</a>
+                                    </small>
+                                </div>
+                                <div ng-if="login.user" class="m-t-15">
+                                    <button type="submit" class="btn btn-lg btn-primary btn-width btn-facebook" ng-click="login.GoFb();">
+                                Login with Facebook
+                            </button>
+                                    <button type="submit" class="btn btn-lg btn-danger btn-width btn-google" ng-click="login.GoGoogle();">
+                             Login with Google
+                        </button>
+                                </div>
+                                <div class="text-center m-t-15 m-b-15" ng-style="!login.user && {'margin-top':'50px'}">
+                                    <small class="font-18">
+                                        <span ng-click="login.GoSignup('User')">Don't have an account?
+                                            <a> Sign Up</a>
+                                        </span>
+                                        <br/>
+                                        <span ng-click="login.GoSignup('Business')">Are You a Business?</span>
+                                    </small>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </ion-content>
+            </ion-view>

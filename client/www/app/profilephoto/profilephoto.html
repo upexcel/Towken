@@ -1,0 +1,16 @@
+<ion-view hide-nav-bar="true">
+    <div class="bar bar-header bkground">
+        <button class="button button-clear" ng-click="pp.GO('app.profile')"> <i class="ion-ios-arrow-left white"></i> <span class="white" >Back</span></button>
+        <div class="title">Setting</div>
+    </div>
+
+    <ion-content scroll="false" class="has-header backgroundwhite">
+        <div class="padding m-t-15">
+         <div class="circleBase type3 profileImg" style="background-image:url({{pp.UserPic}})" ng-click="pp.select();">
+         </div>
+            <div class="text-center m-t-15 font-18">
+                <p> Tap on the circle to change profile picture </p>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,32 @@
+<ion-view hide-back-button="true" hide-nav-bar="true" class="greyBkground">
+    <ion-content scroll="true" class="has-header" has-bouncing='false'>
+        <div class="text-center">
+            <img src="app/assets/img/logo.png" class="ScaleLogo">
+        </div>
+        <div class="col-xs-12 text-center m-t-15" style="position: inherit;">
+            <div class="checkin-circle">
+                <img src="app/assets/img/congrates.gif" class="img-responsive">
+            </div>
+            <div class="m-t-30">
+                <p class="BlackHeading">Congratulations!</p>
+                <p style='font-size:19px;'>{{thankyou.text}}</p>
+                <p style='font-size:17px; font-weight:bold;'>{{thankyou.type}}</p>
+                <div class="TimeButton" style="padding-top: 10px;" ng-if='thankyou.remaining_time'>
+                    <button class="btn btn-block color button123" style="background: #CECACA">
+                             Time remaining  <timer interval="1000" countdown="thankyou.remaining_time">{{hours}}:{{minutes}}:{{seconds}} </timer><br/>
+               </button>
+                </div>
+                <p style='font-size:17px; font-weight:bold;' class="color m-t-15" ng-if="thankyou.type">Redemption Code</p>
+                <p ng-if="thankyou.type">{{thankyou.reedum_code}}</p>
+                 <p style='font-size:17px; font-weight:bold;' class="color m-t-15" ng-if="thankyou.type">Share it with your friends !</p>
+                <p ng-if="thankyou.type"><img src="app/assets/img/fb.png" ng-click="thankyou.fbShare();"><img src="app/assets/img/tw.png" ng-click="thankyou.twitterShare();"></p>
+            </div>
+        </div>
+         <div style="padding: 0px 30px 10px 30px;">
+            <button class="btn btn-lg  btn-width signIn bkground white" ng-click="thankyou.watch()" ng-if="!thankyou.type">
+                 WATCH TOWKEN
+               </button>
+               </div>
+       
+    </ion-content>
+</ion-view>

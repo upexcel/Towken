@@ -1,0 +1,17 @@
+<ion-modal-view>
+   <ion-header-bar>
+      <h1 class="title">Used Towkens</h1>
+      <button class="button icon ion-close-round model-close" on-tap="profile.usedTowkens.hide()"></button>
+   </ion-header-bar>
+   <ion-content>	
+       <div class="list card" ng-repeat="towken in profile.usedTowkenData track by $index">
+        <div class="item item-avatar">
+          <h2>{{towken.business_name}}</h2>
+          <p><i class="fa fa-tag" aria-hidden="true"></i>{{towken.discount}}%&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; {{towken.mile}} Mile</p>
+        </div>
+        <div class="item item-body">
+          <p class="no-mar-top-buttom">{{towken.address}}</p>
+        </div>
+      </div>
+   </ion-content>
+</ion-modal-view>

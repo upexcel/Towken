@@ -1,0 +1,58 @@
+<ion-view hide-back-button="true" hide-nav-bar="true" class="bkground" id="mapList">
+    <div class="bar bar-header bkground">
+        <h1 class="title">Profile</h1>
+    </div>
+
+    <ion-content scroll="true" class="has-header">
+        <div class="padding" style="padding-top: 0px;">
+            <div class="list">
+
+                <span class="item item-icon-left item-icon-right MarTop" ng-click="profile.GO('changepassword')">
+    <i class="icon ion-person scaleIcon  listLefticon  white"></i>
+    <span style="padding-left: 15px;">Change Password</span>
+                <i class="icon ion-chevron-right greyColor"></i>
+                </span>
+                 <span class="item item-icon-left item-icon-right MarTop" ng-click="profile.GO('profilephoto')">
+    <i class="icon ion-ios-locked-outline listLefticon  white"></i>
+    <span style="padding-left: 15px;">Change profile photo  </span>
+                <i class="icon ion-chevron-right greyColor"></i>
+                </span>
+
+                <span class="item item-icon-left item-icon-right MarTop" ng-click="profile.GO('socialaccounts')">
+    <i class="icon ion-android-share-alt scaleIcon listLefticon  white"></i>
+    <span style="padding-left: 15px;">Connect Social Media accounts</span>
+                <i class="icon ion-chevron-right greyColor"></i>
+                </span>
+
+
+                 
+                <span class="item item-icon-left item-icon-right MarTop" ng-click="profile.GO('updateProfile')" ng-if="profile.business">
+    <i class="icon  ion-ios-briefcase-outline listLefticon  white"></i>
+    <span  style="padding-left: 15px;">Change Business Information</span>
+                <i class="icon ion-chevron-right greyColor"></i>
+                </span>
+
+                <span class="item item-icon-left item-icon-right MarTop" ng-click="profile.GO('businessrating')" ng-if="profile.business">
+    <i class="icon  ion-ios-star-outline listLefticon  white"></i>
+    <span  style="padding-left: 15px;">View Rating</span>
+                <i class="icon ion-chevron-right greyColor"></i>
+                </span>
+
+                <span class="item item-icon-left item-icon-right MarTop" ng-click="profile.RedemptionCode.show()" ng-if="profile.business">
+    <i class="icon ion-qr-scanner scaleIcon listLefticon  white"></i>
+    <span  style="padding-left: 15px;">View Redemption Codes</span>
+                <i class="icon ion-chevron-right greyColor"></i>
+                </span>
+
+
+                <span class="item item-icon-left item-icon-right MarTop" ng-click="profile.logout()">
+    <i class="icon  icon ion-log-out listLefticon  white"></i>
+     <span style="padding-left: 15px;">Logout</span>
+
+                </span>
+
+            </div>
+        </div>
+        </div>
+    </ion-content>
+</ion-view>

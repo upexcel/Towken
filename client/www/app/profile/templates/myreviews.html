@@ -1,0 +1,23 @@
+<ion-modal-view>
+    <ion-header-bar class='bkground'>
+        <h1 class="title">My Rating</h1>
+        <button class="button icon ion-close-round model-close" on-tap="profile.myReviews.hide()"></button>
+    </ion-header-bar>
+    <ion-content scroll="false" has-header='true'>
+        <div class="list padding" id="mapList" ng-if="profile.StarData">
+
+            <div class="item MarTop">
+               <div class="MarTop">
+            <label class="modalLevel">Rate</label>
+            <div class="color">
+                <div ng-init="rating = profile.StarData"></div>
+                <div class="star-rating" star-rating rating-value="rating" data-max="5" on-rating-selected="rateFunction(rating)"></div>    
+            </div>
+        </div>
+               
+            </div>
+
+        </div>
+
+    </ion-content>
+</ion-modal-view>

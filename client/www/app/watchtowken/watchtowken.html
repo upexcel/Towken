@@ -1,0 +1,65 @@
+
+    <ion-view hide-back-button="true" hide-nav-bar="true" class="bkground">
+<ion-header-bar align-title="left" class="bkground">
+  <div class="buttons">
+  </div>
+  <h1 class="title"></h1>
+  <div class="buttons">
+   <label class='white' style="margin-top:4px;">Show Customer &nbsp;</label>
+       <label class="toggle">
+         <input type="checkbox" ng-model="watchtowken.show" ng-change="watchtowken.ShowCustomer(watchtowken.show);">
+            <div class="track">
+               <div class="handle bkground"></div>
+            </div>
+      </label>
+  </div>
+ </ion-header-bar>
+    <ion-content scroll="false" class='has-header'  id='TowkenMap'>
+            <div  style="position: relative" class='padding'>
+               <ui-gmap-google-map center='watchtowken.map.center' zoom='watchtowken.map.zoom' dragging='true' events='watchtowken.map.events' options='watchtowken.map.option'>
+                    <ui-gmap-marker coords="watchtowken.marker.coords" options="watchtowken.marker.options" idkey="watchtowken.marker.id"></ui-gmap-marker>
+                    <ui-gmap-markers models="watchtowken.randomMarkers" coords="'self'" icon="'icon'" click="watchtowken.closeClick">
+                        <ui-gmap-windows models="" show="'showWindow'" closeClick="'closeClick'" ng-cloak>
+                            <p ng-non-bindable>1. Towken {{discount}}%
+                            </p>
+                        </ui-gmap-windows>
+                    </ui-gmap-markers>
+                </ui-gmap-google-map>
+            </div>
+            <div class="clearfix"></div>
+             <div id='mapList' style="position: absolute; bottom: -17px; width:100%;">
+             <div class="list card no-pad">
+                 <div class="item item-body no-pad" ng-click="watchtowken.selectedTowken(watchtowken.selectedMarkerData)"> 
+                       <div class="row no-pad no-margin">
+                         <div class="col col-33 no-pad" style="position:relative;">
+                          <img  class="img-responsive CardImg" ng-src="{{watchtowken.image}}">
+                            <div class="CardCircle bkground"> 
+                        <i class="icon ion-ios-pricetag-outline CardIcon"></i>
+                        </div>
+                         </div>
+                         <div class="col col-67 no-pad">
+                           <div class="row no-pad" style="padding-top: 10px;">
+                              <span style="padding-left: 32px;">Get {{watchtowken.selectedMarkerData.discount}}% off</span>
+                           </div>  
+                             <div class="row no-pad" style="padding-left: 32px; padding-top: 10px;">
+                                <p class="CardText">{{watchtowken.selectedMarkerData.des}}</p>
+                             </div>
+                              <div class="row no-pad" style="padding-left: 32px;">
+                                   <span ng-if="!watchtowken.timeRemains" class="color p-t-10">Towken Expired ! </span>
+                                    <div ng-if="watchtowken.timeRemains" style="width: 100%">
+                                <timer countdown="watchtowken.difference" interval="1000"  max-time-unit="'minute'" finish-callback="watchtowken.Timerfinished()">
+                                 <p class="color CardText" style="padding-top:10px;">{{mminutes}} Minutes {{sseconds}} Seconds left</p>
+                                <div class="progress white" style="margin-bottom: 0px;">
+                                    <div class="progress-bar white" role="progressbar" style="width:{{progressBar}}%; background: #a13daa;">
+                                    </div>
+                                </timer>
+                              </div>
+                             </div>
+                         </div>
+                       </div>
+                </div>
+            </div>
+         </div>
+    </ion-content>
+</ion-view>
+

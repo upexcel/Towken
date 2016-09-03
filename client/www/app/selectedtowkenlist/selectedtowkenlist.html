@@ -1,0 +1,43 @@
+<ion-view hide-back-button="true">
+    <ion-content scroll="true">
+        <div id='mapList' ng-if='selectedtowkenlist.towkens' class="padding">
+            <div class="text-center">
+                <h1 class="heading" style="text-transform: uppercase;">{{selectedtowkenlist.towkens.business_name}}</h1>
+                <span class="color"><i class="icon ion-ios-location scaleIcon"></i> {{selectedtowkenlist.towkens.Distance}} Miles away from you</span>
+            </div>
+
+            <img ng-src="{{selectedtowkenlist.towkens.towken_pic}}" class="img-rounded centerImg m-t-15 " style="height: 220px;">
+            <div class="text-center m-t-15">
+                <h1>{{selectedtowkenlist.towkens.discount}}% off all foods</h1>
+                Rating {{selectedtowkenlist.towkens.user_id.rating | number:1}} &nbsp;
+                 <rating ng-model="selectedtowkenlist.towkens.user_id.rating" max="5" readonly='true'></rating>
+            </div>
+            <div class="TimeButton">
+                <button class="btn btn-block color button123" style="background: #CECACA">
+                             Time remaining  <timer interval="1000" countdown="selectedtowkenlist.towkens.remaining_time" finish-callback="selectedtowkenlist.Timerfinished()">{{hours}}:{{minutes}}:{{seconds}} </timer><br/>
+               </button>
+            </div>
+        </div>
+        <div style="padding: 0px 30px 20px 30px;">
+            <button class="btn btn-lg  btn-width signIn bkground white" ng-click="selectedtowkenlist.AddTowken();" ng-disabled="selectedtowkenlist.timeFinished">
+                             <span ng-if='!selectedtowkenlist.timeFinished'> SELECT TOWKEN</span><span ng-if='selectedtowkenlist.timeFinished'>TOWKEN EXPIRED</span>
+               </button>
+
+            <button class="btn btn-lg  btn-width cancelButton" ng-click="selectedtowkenlist.rateAndComment.show()">
+                     RATE THIS TOWKEN
+               </button>
+            
+        </div>
+        <hr/>
+        <div class="padding">
+            <div class="list " id='mapList' ng-repeat = "data in selectedtowkenlist.RateAndReviews.slice().reverse() track by $index  ">
+              <span class="item" href="#">
+                <h2>{{data.name}}</h2>
+                <rating ng-model="data.rating" max="5" readonly='true'></rating>
+                <p>{{data.comment}}</p>
+              </span>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

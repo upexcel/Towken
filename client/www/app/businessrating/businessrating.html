@@ -1,0 +1,18 @@
+<ion-view hide-nav-bar="true">
+    <div class="bar bar-header bkground">
+        <button class="button button-clear" ng-click="BR.GO('app.profile')"> <i class="ion-ios-arrow-left white"></i> <span class="white" >Back</span></button>
+        <div class="title">Your ratings</div>
+    </div>
+   <ion-content scroll="false" class="has-header" style="background: #fff;">
+       
+       <div class="list padding" id ="mapList">
+       <div ng-if ="BR.DataNotAvailable">Your rating not available</div>
+    <span class="item MarTop" ng-repeat="data in BR.RedemptionData track by $index">
+      <h2>Rating:   <rating ng-model="data.rating" max="5" readonly='true'></rating></h2>
+  <!--     <p>Email: {{data.email}}</p> -->
+      <p>Name: {{data.name}}</p>
+      <p>Comment : {{data.comment}}</p>
+    </span>
+</div>
+     </ion-content>
+</ion-view>
